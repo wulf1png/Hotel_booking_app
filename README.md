@@ -1,6 +1,17 @@
-git clone https://github.com/wulf1png/Hotel_booking_app
-composer install
-npm install
+`git clone https://github.com/wulf1png/Hotel_booking_app`
+
+`composer install`
+
+`npm install`
+`bd hotel_booking` - войти в проект
+
+`php artisan migrate` - добавляет данные в базу.
+
+`php artisan db:seed --class=UpdateRoomPricesSeeder` - Добавляет цены в базу.
+`php artisan db:seed --class=RoomSeeder` - Добавляет информацию об отелях.
+
+`php artisan serve` - запускает сервер.
+
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 

@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #e3f2fd, #e0e0e0);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Выравнивание сверху */
+    min-height: 100vh;
+    color: #333;
+    overflow-x: hidden; /* Убираем горизонтальный скролл */
+}
+
+    body:before {
+        content: '';
+        position: fixed; /* Фон фиксируется и не влияет на прокрутку */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.4), transparent 70%);
+        animation: rotateGradient 20s linear infinite;
+        z-index: -1;
+        pointer-events: none; /* Фон не мешает взаимодействию с контентом */
+    }
+
+.container {
+    max-width: 800px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    animation: fadeIn 0.5s ease-in-out;
+    margin: 20px auto; /* Добавляем отступы сверху и снизу */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+h2 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 26px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+a {
+    display: block;
+    margin: 10px auto;
+    padding: 12px 20px;
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 500;
+    width: 240px;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+    a:hover {
+        background: linear-gradient(90deg, #0056b3, #003f87);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #555;
+}
+
+input[type="text"], input[type="date"], button {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.2s;
+    background: #f9fafb;
+}
+
+    input[type="text"]:focus, input[type="date"]:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+    }
+
+button {
+    background: linear-gradient(90deg, #28a745, #218838);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+    button:hover {
+        background: linear-gradient(90deg, #218838, #196f32);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+
+.rooms-container {
+    max-height: 400px; /* Ограничение высоты контейнера */
+    overflow-y: auto; /* Вертикальный скролл при необходимости */
+    padding-right: 10px; /* Чтобы скролл не наезжал на контент */
+}
+
+    .rooms-container::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .rooms-container::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 123, 255, 0.5);
+        border-radius: 3px;
+    }
+
+    .rooms-container::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(0, 123, 255, 0.7);
+    }
+
+.room, .booking {
+    background: #f9f9f9;
+    margin: 15px 0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    display: grid; /* Используем CSS Grid */
+    grid-template-columns: repeat(3, 1fr); /* Устанавливаем 3 равные колонки */
+    gap: 10px; /* Расстояние между строками и колонками */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+    text-align: left; /* Выравнивание текста по левому краю */
+}
+
+    .room:hover, .booking:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .room:before, .booking:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, rgba(0, 123, 255, 0.1), rgba(0, 86, 179, 0.1));
+        opacity: 0; /* По умолчанию градиент скрыт */
+        transition: opacity 0.3s ease-in-out; /* Плавное изменение прозрачности */
+        z-index: -1; /* Градиент находится под содержимым */
+    }
+
+    .room:hover:before, .booking:hover:before {
+        opacity: 1; /* Показываем градиент при наведении */
+    }
+
+    .room .details, .booking .details {
+        font-size: 14px;
+        color: #666;
+        grid-column: span 3; /* Охватываем всю ширину блока */
+    }
+
+    .room .actions, .booking .actions {
+        display: flex;
+        gap: 10px;
+        grid-column: span 3; /* Делаем действия на всю ширину */
+    }
+
+        .room .actions a, .booking .actions a {
+            padding: 8px 14px;
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+            .room .actions a:hover, .booking .actions a:hover {
+                background: linear-gradient(90deg, #0056b3, #003f87);
+                transform: translateY(-2px);
+            }
+
+div p {
+    margin: 10px 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center; /* Центрирование по горизонтали */
+    gap: 15px; /* Расстояние между кнопками */
+    margin-top: 20px; /* Отступ сверху */
+}
+
+    .buttons-container a {
+        display: inline-block; /* Сохраняем блочную природу ссылок */
+        padding: 12px 20px;
+        background: linear-gradient(90deg, #007bff, #0056b3);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 12px;
+        text-align: center;
+        font-weight: 500;
+        transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+    }
+
+        .buttons-container a:hover {
+            background: linear-gradient(90deg, #0056b3, #003f87);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
